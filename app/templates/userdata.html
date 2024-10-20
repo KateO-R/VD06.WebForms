@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Questionnaire</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <style>
+        body {
+            background-color: #121212;
+            color: #e0e0e0;
+        }
+        h1, h2 {
+            color: #1e90ff;
+        }
+        .container {
+            margin-top: 50px;
+            background-color: #1c1c1c;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+        }
+        .form-control, .btn-primary {
+            background-color: #1e90ff;
+            border: none;
+        }
+        .form-control::placeholder {
+            color: #b0c4de;
+        }
+        .form-control:focus {
+            box-shadow: none;
+            border-color: #1e90ff;
+        }
+        .post {
+            background-color: #2c2c2c;
+            padding: 15px;
+            margin-bottom: 15px;
+            border-radius: 8px;
+        }
+        .btn-primary {
+            color: #fff;
+        }
+        .btn-primary:hover {
+            background-color: #4682b4;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Questionnaire</h1>
+        <form method="POST" action="/">
+            <div class="form-group">
+                <label for="name">Name:</label>
+                <input type="text" class="form-control" id="name" name="name" placeholder="Enter your name" required>
+            </div>
+            <br>
+            <div class="form-group">
+                <label for="age">Age:</label>
+                <input type="number" class="form-control" id="age" name="age" placeholder="Enter your age" min="0" max="120" required>
+            </div>
+            <br>
+            <div class="form-group">
+                <label for="name">City:</label>
+                <input type="text" class="form-control" id="city" name="city" placeholder="Enter city name, where do you live" required>
+            </div>
+            <br>
+            <div class="form-group">
+                <label for="name">Hobby:</label>
+                <input type="text" class="form-control" id="hobby" name="hobby" placeholder="Enter your hobby" required>
+            </div>
+            <br>
+            <button type="submit" class="btn btn-primary">Send data</button>
+        </form>
+        <hr>
+        <h2>Your data</h2>
+        {% for post in posts %}
+        <div class="post">
+            <h4>Your name is {{ post.name }}</h4>
+            <p>You are {{ post.age }}</p>
+            <p>{{ post.name }} lives in {{ post.city }}</p>
+            <p>Your hobby is {{ post.hobby }}</p>
+        </div>
+        {% endfor %}
+    </div>
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>
